@@ -1,3 +1,3 @@
 #!/bin/bash
 mkdir -p bin && cd bin/
-go build -v ../src/file-server
+go build -v ../src

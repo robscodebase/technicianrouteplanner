@@ -1,17 +1,9 @@
 version: '3'
 
 services:
-    event-planner:
+    technician-route-planner:
         build: ./src/file-server
         ports:
             - "8080:8080"
-        depends_on:
-            - db
+
         container_name: technician-route-planner
-
-
-    db:
-        image: mysql
-        environment:
-            MYSQL_ROOT_PASSWORD: insecure
-        container_name: mysql-technician-route-planner
