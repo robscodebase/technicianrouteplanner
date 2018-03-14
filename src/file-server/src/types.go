@@ -1,40 +1,47 @@
 // Copyright (c) 2018 Robert Reyna. All rights reserved.
 // License BSD 3-Clause https://github.com/robscodebase/eventplanner/blob/master/LICENSE.md
-// types.go contains most of the structs and types encountered in the program including Event, User, and Page data.
+// types.go contains most of the structs and types encountered in the program including.
 package main
 
 import (
 	"net/http"
 )
 
-type PageData struct {
-	Events []*Event
-	User
-	PageName string
-	Message  string
-	Event *Event
-}
-
-type Event struct {
-	ID          int64
-	Name        string
-	StartTime   string
-	EndTime     string
-	Description string
-	UserID      int64
-}
-
 type User struct {
 	ID            int64
 	Username      string
 	Secret        []byte
-	CookieSession string
 }
 
-type errorCheck func(http.ResponseWriter, *http.Request) *errorMessage
+type PageData struct {
+	Route
+	User
+}
 
-type errorMessage struct {
-	Error   error
-	Message string
-	Code    int
+type Route struct {
+	ID          int64
+	Stops []RouteStops
+	Technician
+}
+
+type Technician struct {
+	ID int64
+	Name string
+}
+
+type RouteStops struct {
+	ID int64
+	Name string
+	Address string
+	Lng float64
+	Lat float64
+}
+
+type Point struct {
+	Lng float64
+	Lat float64
+}
+
+type Bounds struct {
+	Points []Point
 }

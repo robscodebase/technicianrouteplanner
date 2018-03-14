@@ -1,9 +1,14 @@
 version: '3'
 
 services:
-    technician-route-planner:
+    technician-route-planner-file-server:
         build: ./src/file-server
         ports:
             - "8080:8080"
+        depends_on:
+            - db
+        container_name: technician-route-planner-file-server
 
-        container_name: technician-route-planner
+    db:
+        image: mongo
+        container_name: technician-route-planner-mongo
