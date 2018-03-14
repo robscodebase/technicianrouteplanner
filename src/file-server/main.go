@@ -8,10 +8,8 @@ import (
 	"html/template"
 	"log"
 	"net/http"
-	"os"
 
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 )
 
@@ -43,14 +41,12 @@ func runHandlers() http.Handler {
 	FileServerPath := "/home/robert/gocode/src/robert/technicianrouteplanner/src/file-server/templates"
 	r.PathPrefix("/").Handler(http.FileServer(http.Dir(FileServerPath)))
 
-	http.Handle("/", handlers.CombinedLoggingHandler(os.Stderr, r))
-
 	return r
 }
 
 func technicianRoutePageHandler(w http.ResponseWriter, r *http.Request) {
-	t, err := template.New("foo").Parse(`{{define "T"}}Hello, {{.}}!{{end}}`)
-	err = t.ExecuteTemplate(w, "T", "<script>alert('you have been pwned')</script>")
+	t, err := template.New("foo").Parse(`{{define "T"}}<title>Technician Route Planner</title>Hello, {{.}}!{{end}}`)
+	err = t.ExecuteTemplate(w, "T", "Technician")
 	if err != nil {
 		log.Fatalf("main.go: technicianRoutePageHandler(): ExecuteTemplate(): error: %v", err)
 	}
