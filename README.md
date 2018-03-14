@@ -1,2 +1,2 @@
 # technicianrouteplanner
-Docker Golang Protobuf MySQL NPM Vuejs
+Docker Golang Protobuf MongoDB NPM Vuejs
