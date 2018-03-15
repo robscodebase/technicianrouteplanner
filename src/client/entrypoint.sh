@@ -1,3 +1,2 @@
 #!/bin/bash
-#npm build
-pwd
+npm run build
