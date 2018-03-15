@@ -1,0 +1,21 @@
+#!/usr/bin/expect -f
+spawn vue init webpack vue-technician-route-planner
+expect "planner)"
+send "\r"
+expect "project)"
+send "Robert Reyna Demo Project\r"
+expect "Author"
+send "Robert Reyna robscodebase@gmail.com\r"
+expect "elsewhere"
+send "\r"
+expect "router?"
+send "Y\r"
+expect "code"
+send "n\r"
+expect "tests"
+send "n\r"
+expect "watch?"
+send "n\r"
+expect "myself"
+send "n\r"
+interact

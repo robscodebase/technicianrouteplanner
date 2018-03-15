@@ -1,0 +1,12 @@
+{
+  "name": "vue-technician-route-planner",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+  },
+  "license": "none",
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}
