@@ -1,10 +1,9 @@
 #!/bin/bash
-docker stop $(docker ps -a -q)
-docker rm $(docker ps -a -q)
+docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)
+docker rmi $(docker images -a | grep "tech")
 docker rmi $(docker images -a | grep "<none>")
-docker rmi $(docker images -a | grep "technician")
-docker volume rm $(docker volume ls)
+docker volume rm $(docker volume ls -a)
 docker ps -a
-docker images
-docker volume ls
+docker images -a
+docker volume ls -a
 docker-compose up

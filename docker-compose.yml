@@ -8,7 +8,17 @@ services:
         depends_on:
             - db
         container_name: technician-route-planner-file-server
-
+        volumes:
+            - tech-router-front-end-dist:dist
     db:
         image: mongo
         container_name: technician-route-planner-mongo
+
+    vue-technician-route-planner:
+        build: ./src/client
+        container_name: vue-technician-route-planner
+        volumes:
+            - tech-router-front-end-dist:/vue-technician-route-planner/dist
+            - ./vuesrc:/vue-technician-route-planner/src
+volumes:
+  tech-router-front-end-dist:
