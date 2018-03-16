@@ -47,17 +47,16 @@ func main() {
 func runHandlers() http.Handler {
 	sLog("main.go: runHandlers()")
 	r := mux.NewRouter()
-	r.Handle("/", http.RedirectHandler("/home", http.StatusFound))
+	r.Handle("/home", http.RedirectHandler("/home", http.StatusFound))
 
 	// Get methods.
 	r.HandleFunc("/home", home)
 	//r.HandleFunc("/home", technicianRoutePageHandler)
 
 	// set different server path for development testing.
-	//FileServerPath := "/go/src/technicianrouteplanner/src/file-server/templates"
-	FileServerPath := "/home/robert/gocode/src/robert/technicianrouteplanner/src/file-server/templates"
+	FileServerPath := "/go/src/technicianrouteplanner/templates"
+	//FileServerPath := "/home/robert/gocode/src/robert/technicianrouteplanner/src/file-server/templates"
 	r.PathPrefix("/").Handler(http.FileServer(http.Dir(FileServerPath)))
-
 	return r
 }
 
