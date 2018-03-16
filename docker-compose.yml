@@ -9,7 +9,7 @@ services:
             - db
         container_name: technician-route-planner-file-server
         volumes:
-            - ./vuesrc/dist:go/src/technicianrouteplanner/templates
+            - ./vuesrc/dist:/go/src/technicianrouteplanner/templates
     db:
         image: mongo
         container_name: technician-route-planner-mongo
