@@ -208,7 +208,7 @@ Route 2: Stop 2: 4 Stops remain<template>
                   </div>
                 </li>
                 <li class="legend">
-                  <b-badge pill variant="info"></b-badge> <small>New clients</small> &nbsp; <b-badge pill variant="danger"></b-badge> <small>Recurring clients</small>
+                  <b-badge pill variant="info"></b-badge> <small>On-Time Rate</small> &nbsp; <b-badge pill variant="danger"></b-badge> <small>Completed Jobs</small>
                 </li>
               </ul>
             </b-col>
@@ -253,7 +253,7 @@ Route 2: Stop 2: 4 Stops remain<template>
                 </li>
                 <li class="divider"></li>
                 <li>
-                  <i class="icon-globe"></i>
+                  <i class="icon-people"></i>
                   <span class="title">Yearly Labor</span>
                   <span class="value">191,235 <span class="text-muted small">(56%)</span></span>
                   <div class="bars">
@@ -261,7 +261,7 @@ Route 2: Stop 2: 4 Stops remain<template>
                   </div>
                 </li>
                 <li>
-                  <i class="icon-social-facebook"></i>
+                  <i class="icon-pie-chart"></i>
                   <span class="title">Yearly Equipment</span>
                   <span class="value">51,223 <span class="text-muted small">(15%)</span></span>
                   <div class="bars">
@@ -269,7 +269,7 @@ Route 2: Stop 2: 4 Stops remain<template>
                   </div>
                 </li>
                 <li>
-                  <i class="icon-social-twitter"></i>
+                  <i class="icon-wrench"></i>
                   <span class="title">Yearly Tools</span>
                   <span class="value">37,564 <span class="text-muted small">(11%)</span></span>
                   <div class="bars">
@@ -277,7 +277,7 @@ Route 2: Stop 2: 4 Stops remain<template>
                   </div>
                 </li>
                 <li>
-                  <i class="icon-social-linkedin"></i>
+                  <i class="icon-film"></i>
                   <span class="title">Yearly Advertising</span>
                   <span class="value">27,319 <span class="text-muted small">(8%)</span></span>
                   <div class="bars">
@@ -293,7 +293,7 @@ Route 2: Stop 2: 4 Stops remain<template>
               <b-row>
                 <b-col sm="6">
                   <Callout>
-                    <small class="text-muted">Vehicle Depreciation</small><br>
+                    <small class="text-muted">Fleet Maint</small><br>
                     <strong class="h4">23%</strong>
                     <div class="chart-wrapper">
                       <callout-chart-example :data="[78, 81, 80, 45, 34, 12, 40]" width="80px" height="30" />
