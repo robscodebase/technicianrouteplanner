@@ -10,6 +10,7 @@
       <b-nav-item class="px-3">Technician Route Planner</b-nav-item>
       <b-nav-item class="px-3">Add Route</b-nav-item>
       <b-nav-item class="px-3">Add Technician</b-nav-item>
+      <b-nav-item class="px-3">Logout</b-nav-item>
     </b-navbar-nav>
     <button class="navbar-toggler aside-menu-toggler d-md-down-none" type="button" @click="asideToggle">
       <span class="navbar-toggler-icon"></span>
