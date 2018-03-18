@@ -1,8 +1,9 @@
 <template>
-<div id='map'></div>
 
-  <div class="animated fadeIn">
     <b-row>
+    <div class="container">
+    <div id="map"></div>
+    </div>
       <b-col sm="6" lg="3">
         <b-card no-body class="bg-primary">
           <b-card-body class="pb-0">

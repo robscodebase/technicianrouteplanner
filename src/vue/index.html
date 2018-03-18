@@ -8,11 +8,8 @@
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
     <title>Technician Route Planner</title>
     <style>
-      #map { position:absolute; top:0; bottom:0; width:100%; }
+      #map { position:absolute; top:0; bottom: 0; width: 100%; z-index: 1;}
       @media (max-width: 768px) {
-        #map {
-          width: 50%;
-        }
       }
     </style>
   </head>
@@ -48,15 +45,16 @@
   <body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
     <div id="app"></div>
     <!-- built files will be auto injected -->
+    <script>
+      mapboxgl.accessToken = 'pk.eyJ1Ijoicm9ic2NvZGViYXNlIiwiYSI6ImNqZXdmeGVkMDBwMjQydm54YmNid3B5bTUifQ.zPGSWpLfJaqgCvIkqfbbYA';
+      var map = new mapboxgl.Map({
+        container: 'map',
+        zoom: 9,
+        center: [137.9150899566626, 36.25956997955441],
+        style: 'mapbox://styles/mapbox/satellite-v9',
+        hash: false
+      });
+    </script>
   </body>
-  <script>
-    mapboxgl.accessToken = 'pk.eyJ1Ijoicm9ic2NvZGViYXNlIiwiYSI6ImNqZXdmeGVkMDBwMjQydm54YmNid3B5bTUifQ.zPGSWpLfJaqgCvIkqfbbYA';
-    var map = new mapboxgl.Map({
-      container: 'map',
-      zoom: 9,
-      center: [137.9150899566626, 36.25956997955441],
-      style: 'mapbox://styles/mapbox/satellite-v9',
-      hash: false
-    });
-  </script>
+
 </html>
