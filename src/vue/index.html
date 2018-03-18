@@ -4,7 +4,17 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>CoreUI - Open Source Bootstrap Admin Template</title>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
+    <title>Technician Route Planner</title>
+    <style>
+      #map { position:absolute; top:0; bottom:0; width:100%; }
+      @media (max-width: 768px) {
+        #map {
+          width: 50%;
+        }
+      }
+    </style>
   </head>
 
   <!-- BODY options, add following classes to body to change options
@@ -39,4 +49,14 @@
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>
+  <script>
+    mapboxgl.accessToken = 'pk.eyJ1Ijoicm9ic2NvZGViYXNlIiwiYSI6ImNqZXdmeGVkMDBwMjQydm54YmNid3B5bTUifQ.zPGSWpLfJaqgCvIkqfbbYA';
+    var map = new mapboxgl.Map({
+      container: 'map',
+      zoom: 9,
+      center: [137.9150899566626, 36.25956997955441],
+      style: 'mapbox://styles/mapbox/satellite-v9',
+      hash: false
+    });
+  </script>
 </html>

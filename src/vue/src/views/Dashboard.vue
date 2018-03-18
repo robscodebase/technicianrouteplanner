@@ -1,4 +1,6 @@
-Route 2: Stop 2: 4 Stops remain<template>
+<template>
+<div id='map'></div>
+
   <div class="animated fadeIn">
     <b-row>
       <b-col sm="6" lg="3">
