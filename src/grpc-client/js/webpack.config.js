@@ -4,8 +4,8 @@ const path = require('path');
 module.exports = {
   entry: "./src/grpc-client.js",
   output: {
-    path: "/go/src/technicianrouteplanner/src/file-server/app/templates/src/local/js/",
-    filename: 'grpc-map-tools.js'
+    path: "/go/src/grpc-client/js/static/",
+    filename: 'grpc-client.js'
   },
   devtool: 'inline-source-map',
   module: {

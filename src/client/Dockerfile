@@ -1,5 +1,5 @@
 FROM node:9.8
-#RUN apt-get update && apt-get install -y protobuf-compiler python-setuptools
+RUN apt-get update
 COPY . .
 RUN npm install vue && npm install --global vue-cli
 WORKDIR /vue-technician-route-planner
