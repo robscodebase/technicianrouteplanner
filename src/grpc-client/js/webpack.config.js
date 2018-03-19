@@ -2,9 +2,9 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-  entry: "./src/map-tools.js",
+  entry: "./src/grpc-client.js",
   output: {
-    path: "/go/src/agency_app/src/file-server/app/templates/src/local/js/campaign/",
+    path: "/go/src/technicianrouteplanner/src/file-server/app/templates/src/local/js/",
     filename: 'grpc-map-tools.js'
   },
   devtool: 'inline-source-map',

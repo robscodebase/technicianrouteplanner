@@ -6,4 +6,4 @@ protoc \
   -I ./proto \
   --js_out=import_style=commonjs,binary:./ts/_proto \
   --ts_out=service=true:./ts/_proto \
-./proto/grpcMapTools.proto
+./proto/technicianroutplanner.proto
