@@ -5,4 +5,4 @@ WORKDIR /js
 RUN npm install webpack -g
 RUN npm install webpack-cli -g
 RUN npm install
-ENTRYPOINT ["./build.sh"]
+ENTRYPOINT ["/build.sh"]
