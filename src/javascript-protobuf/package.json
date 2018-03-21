@@ -1,5 +1,5 @@
 {
-  "name": "grpc-client",
+  "name": "protobuf",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -12,10 +12,8 @@
   },
   "devDependencies": {
     "awesome-typescript-loader": "^3.4.1",
-    "concurrently": "^3.4.0",
     "ts-loader": "^2.0.1",
     "ts-protoc-gen": "0.3.2",
-    "typescript": "^2.6.2",
-    "webpack": "^4.0.0"
+    "typescript": "^2.6.2"
   }
 }
