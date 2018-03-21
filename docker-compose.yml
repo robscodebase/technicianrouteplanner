@@ -1,21 +1,40 @@
 version: '3'
 
 services:
-    technician-route-planner-file-server:
+    file-server:
         build: ./src/file-server
         ports:
             - "8080:8080"
         depends_on:
             - db
-        container_name: technician-route-planner-file-server
+        container_name: file-server
         volumes:
-            - ./src/vue/dist:/go/src/technicianrouteplanner/templates
+            - ./src/shared/vue/dist:/go/src/technicianrouteplanner/templates
+            - ./src/shared/grpc-build:/go/src/technicianrouteplanner/grpc-build
     db:
         image: mongo
         container_name: technician-route-planner-mongo
 
-    vue-technician-route-planner:
-        build: ./src/client
-        container_name: vue-technician-route-planner
+    grpc-server:
+        build: ./src/grpc-server
+        container_name: grpc-server
         volumes:
-            - ./src/vue:/vue-technician-route-planner
+            - ./src/shared/proto:/go/src/grpc-server/proto
+
+    vue-client:
+        build: ./src/client
+        container_name: vue-client
+        volumes:
+            - ./src/shared/vue:/vue-technician-route-planner
+
+    golang-protobuf:
+        build: ./src/golang-protobuf
+        container_name: golang-protobuf
+        volumes:
+            - ./src/shared/proto:/go/src/golang-protobuf/proto
+
+    javascript-protobuf:
+        build: ./src/javascript-protobuf
+        container_name: javascript-protobuf
+        volumes:
+            - ./src/shared/proto:/go/src/protobuf/proto

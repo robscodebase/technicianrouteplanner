@@ -16,6 +16,6 @@
     "ts-loader": "^2.0.1",
     "ts-protoc-gen": "0.3.2",
     "typescript": "^2.6.2",
-    "webpack": "^4.0.0"
+    "webpack": "^4.1.1"
   }
 }

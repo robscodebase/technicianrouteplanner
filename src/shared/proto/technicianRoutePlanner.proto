@@ -3,4 +3,15 @@ syntax = "proto2";
 package technicianRoutePlanner;
 
 service routePlanner {
+rpc RoutePlanner(RoutePlannerRequest) returns (RoutePlannerReply) {}
+
+}
+
+message RoutePlannerRequest {
+    string routeName = 1;
+}
+
+message RoutePlannerReply {
+  repeated double lineNumbers = 1;
+  double sizeofclickedcellsmap = 2;
 }
