@@ -7,8 +7,6 @@ services:
             - "8080:8080"
         depends_on:
             - db
-            - vue-client
-            - javascript-protobuf
         container_name: file-server
         volumes:
             - ./src/shared/vue/dist:/go/src/technicianrouteplanner/templates
@@ -19,8 +17,6 @@ services:
 
     grpc-server:
         build: ./src/grpc-server
-        depends_on:
-            - golang-protobuf
         container_name: grpc-server
         volumes:
             - ./src/shared/proto:/go/src/grpc-server/proto
@@ -32,13 +28,13 @@ services:
             - ./src/shared/vue:/vue-technician-route-planner
 
     golang-protobuf:
-        build: ./src/protobufs/golang-protobuf
+        build: ./src/golang-protobuf
         container_name: golang-protobuf
         volumes:
             - ./src/shared/proto:/go/src/golang-protobuf/proto
 
     javascript-protobuf:
-        build: ./src/protobufs/javascript-protobuf
+        build: ./src/javascript-protobuf
         container_name: javascript-protobuf
         volumes:
             - ./src/shared/proto:/go/src/protobuf/proto

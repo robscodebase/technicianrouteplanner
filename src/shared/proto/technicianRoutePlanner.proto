@@ -8,10 +8,10 @@ rpc RoutePlanner(RoutePlannerRequest) returns (RoutePlannerReply) {}
 }
 
 message RoutePlannerRequest {
-    string routeName = 1;
+    required string routeName = 1;
 }
 
 message RoutePlannerReply {
   repeated double lineNumbers = 1;
-  double sizeofclickedcellsmap = 2;
+  required double sizeofclickedcellsmap = 2;
 }
