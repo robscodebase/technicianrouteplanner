@@ -14,5 +14,4 @@ COPY . /go/src/grpc-server
 WORKDIR /go/src/grpc-server
 #RUN [./build.sh]
 COPY ./entrypoint.sh /
-RUN ls
-ENTRYPOINT [/entrypoint.sh]
+#ENTRYPOINT [/entrypoint.sh]

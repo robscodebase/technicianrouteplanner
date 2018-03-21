@@ -9,11 +9,11 @@ import (
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/grpclog"
-	"google.golang.org/grpc/metadata"
+//	"google.golang.org/grpc/metadata"
 
 	pb "grpc-server/proto"
 	"github.com/improbable-eng/grpc-web/go/grpcweb"
-	"golang.org/x/net/context"
+//	"golang.org/x/net/context"
 )
 
 var (
@@ -21,15 +21,14 @@ var (
 	tlsCertFilePath = flag.String("tls_cert_file", "../misc/localhost.crt", "Path to the CRT/PEM file.")
 	tlsKeyFilePath  = flag.String("tls_key_file", "../misc/localhost.key", "Path to the private key file.")
 )
-
+type server struct{}
 func main() {
-	funcLog("main")
 	flag.Parse()
 
 	port := 9090
 
 	grpcServer := grpc.NewServer()
-	pb.RegisterGrpcTechnicianRoutePlanner(grpcServer, &server{})
+	pb.RegisterRoutePlannerServer(grpcServer, &server{})
 	grpclog.SetLogger(log.New(os.Stdout, "grpc-server: ", log.LstdFlags))
 
 	wrappedServer := grpcweb.WrapServer(grpcServer)
