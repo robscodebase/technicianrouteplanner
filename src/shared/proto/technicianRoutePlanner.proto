@@ -13,5 +13,5 @@ message RoutePlannerRequest {
 
 message RoutePlannerReply {
   repeated double lineNumbers = 1;
-  required double sizeofclickedcellsmap = 2;
+  required double sizeOfArray = 2;
 }

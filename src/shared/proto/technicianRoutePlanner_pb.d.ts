@@ -31,10 +31,10 @@ export class RoutePlannerReply extends jspb.Message {
   setLinenumbersList(value: Array<number>): void;
   addLinenumbers(value: number, index?: number): number;
 
-  hasSizeofclickedcellsmap(): boolean;
-  clearSizeofclickedcellsmap(): void;
-  getSizeofclickedcellsmap(): number | undefined;
-  setSizeofclickedcellsmap(value: number): void;
+  hasSizeofarray(): boolean;
+  clearSizeofarray(): void;
+  getSizeofarray(): number | undefined;
+  setSizeofarray(value: number): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RoutePlannerReply.AsObject;
@@ -49,7 +49,7 @@ export class RoutePlannerReply extends jspb.Message {
 export namespace RoutePlannerReply {
   export type AsObject = {
     linenumbersList: Array<number>,
-    sizeofclickedcellsmap?: number,
+    sizeofarray?: number,
   }
 }
 

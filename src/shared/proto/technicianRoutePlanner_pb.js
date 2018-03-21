@@ -238,7 +238,7 @@ proto.technicianRoutePlanner.RoutePlannerReply.prototype.toObject = function(opt
 proto.technicianRoutePlanner.RoutePlannerReply.toObject = function(includeInstance, msg) {
   var f, obj = {
     linenumbersList: jspb.Message.getRepeatedFloatingPointField(msg, 1),
-    sizeofclickedcellsmap: +jspb.Message.getField(msg, 2)
+    sizeofarray: +jspb.Message.getField(msg, 2)
   };
 
   if (includeInstance) {
@@ -282,7 +282,7 @@ proto.technicianRoutePlanner.RoutePlannerReply.deserializeBinaryFromReader = fun
       break;
     case 2:
       var value = /** @type {number} */ (reader.readDouble());
-      msg.setSizeofclickedcellsmap(value);
+      msg.setSizeofarray(value);
       break;
     default:
       reader.skipField();
@@ -371,21 +371,21 @@ proto.technicianRoutePlanner.RoutePlannerReply.prototype.clearLinenumbersList = 
 
 
 /**
- * required double sizeofclickedcellsmap = 2;
+ * required double sizeOfArray = 2;
  * @return {number}
  */
-proto.technicianRoutePlanner.RoutePlannerReply.prototype.getSizeofclickedcellsmap = function() {
-  return /** @type {number} */ (!this.hasSizeofclickedcellsmap() ? 0.0 : +jspb.Message.getField(this, 2));
+proto.technicianRoutePlanner.RoutePlannerReply.prototype.getSizeofarray = function() {
+  return /** @type {number} */ (!this.hasSizeofarray() ? 0.0 : +jspb.Message.getField(this, 2));
 };
 
 
 /** @param {number|undefined} value  */
-proto.technicianRoutePlanner.RoutePlannerReply.prototype.setSizeofclickedcellsmap = function(value) {
+proto.technicianRoutePlanner.RoutePlannerReply.prototype.setSizeofarray = function(value) {
   jspb.Message.setField(this, 2, value);
 };
 
 
-proto.technicianRoutePlanner.RoutePlannerReply.prototype.clearSizeofclickedcellsmap = function() {
+proto.technicianRoutePlanner.RoutePlannerReply.prototype.clearSizeofarray = function() {
   jspb.Message.setField(this, 2, undefined);
 };
 
@@ -394,7 +394,7 @@ proto.technicianRoutePlanner.RoutePlannerReply.prototype.clearSizeofclickedcells
  * Returns whether this field is set.
  * @return{!boolean}
  */
-proto.technicianRoutePlanner.RoutePlannerReply.prototype.hasSizeofclickedcellsmap = function() {
+proto.technicianRoutePlanner.RoutePlannerReply.prototype.hasSizeofarray = function() {
   return jspb.Message.getField(this, 2) != null;
 };
 

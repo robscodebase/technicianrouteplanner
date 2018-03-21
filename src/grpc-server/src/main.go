@@ -9,11 +9,11 @@ import (
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/grpclog"
-//	"google.golang.org/grpc/metadata"
+	"google.golang.org/grpc/metadata"
 
 	pb "grpc-server/proto"
 	"github.com/improbable-eng/grpc-web/go/grpcweb"
-//	"golang.org/x/net/context"
+	"golang.org/x/net/context"
 )
 
 var (
@@ -46,4 +46,10 @@ func main() {
 	if err := httpServer.ListenAndServe(); err != nil {
 		grpclog.Fatalf("file: main.go failed starting http server: %v", err)
 	}
+}
+
+func (s *server) technicianRoute(ctx context.Context, r *pb.RoutePlannerRequest) (*pb.RoutePlannerReply, error) {
+	grpc.SendHeader(ctx, metadata.Pairs("Pre-Response-Metadata", "Is-sent-as-headers-unary"))
+	grpc.SetTrailer(ctx, metadata.Pairs("Post-Response-Metadata", "Is-sent-as-trailers-unary"))
+	return &pb.RouteReply{[]float64{1,2,3,4,5}, float64(6)}, nil
 }
