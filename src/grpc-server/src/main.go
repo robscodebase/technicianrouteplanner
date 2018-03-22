@@ -48,8 +48,14 @@ func main() {
 	}
 }
 
-func (s *server) technicianRoute(ctx context.Context, r *pb.RoutePlannerRequest) (*pb.RoutePlannerReply, error) {
+func (s *server) RoutePlanner(ctx context.Context, r *pb.RoutePlannerRequest) (*pb.RoutePlannerReply, error) {
 	grpc.SendHeader(ctx, metadata.Pairs("Pre-Response-Metadata", "Is-sent-as-headers-unary"))
 	grpc.SetTrailer(ctx, metadata.Pairs("Post-Response-Metadata", "Is-sent-as-trailers-unary"))
-	return &pb.RouteReply{[]float64{1,2,3,4,5}, float64(6)}, nil
+	var blankFloat float64
+	blankFloat = 6
+	var replySlice []float64
+	for i := 0; i < 6; i++ {
+		replySlice = append(replySlice, float64(i))
+	}
+	return &pb.RoutePlannerReply{replySlice, &blankFloat, []byte("")}, nil
 }
