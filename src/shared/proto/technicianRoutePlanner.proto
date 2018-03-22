@@ -2,7 +2,7 @@ syntax = "proto2";
 
 package technicianRoutePlanner;
 
-service routePlanner {
+service technicianRoutePlanner {
 rpc RoutePlanner(RoutePlannerRequest) returns (RoutePlannerReply) {}
 
 }

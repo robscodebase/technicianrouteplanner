@@ -1,9 +1,9 @@
 import {grpc, Code, Metadata} from "grpc-web-client";
-import {technicianRoutePlanner} from "/js/proto/technicianRoutePlanner_pb_service";
-import {RoutePlannerRequest, RoutePlannerReply} from "/js/proto/technicianRoutePlanner_pb";
+import {routePlanner} from "/proto/technicianRoutePlanner_pb_service";
+import {RoutePlannerRequest, RoutePlannerReply} from "/proto/technicianRoutePlanner_pb";
 
 const host = "http://localhost:9090";
-const routeRequest = new RoutePlannerRequest();
+const routeRequest = new RouteRequest();
 routeRequest.setRoutename("Demo")
 
 grpc.unary(technicianRoutePlanner.PlanRoute, {

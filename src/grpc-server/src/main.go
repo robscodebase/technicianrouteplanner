@@ -18,8 +18,6 @@ import (
 
 var (
 	enableTls       = flag.Bool("enable_tls", false, "Use TLS - required for HTTP2.")
-	tlsCertFilePath = flag.String("tls_cert_file", "../misc/localhost.crt", "Path to the CRT/PEM file.")
-	tlsKeyFilePath  = flag.String("tls_key_file", "../misc/localhost.key", "Path to the private key file.")
 )
 type server struct{}
 func main() {
@@ -48,7 +46,7 @@ func main() {
 	}
 }
 
-func (s *server) RoutePlanner(ctx context.Context, r *pb.RoutePlannerRequest) (*pb.RoutePlannerReply, error) {
+func (s *server) PlanRoute(ctx context.Context, r *pb.RoutePlannerRequest) (*pb.RoutePlannerReply, error) {
 	grpc.SendHeader(ctx, metadata.Pairs("Pre-Response-Metadata", "Is-sent-as-headers-unary"))
 	grpc.SetTrailer(ctx, metadata.Pairs("Post-Response-Metadata", "Is-sent-as-trailers-unary"))
 	var blankFloat float64
