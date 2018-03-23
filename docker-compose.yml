@@ -41,18 +41,19 @@ services:
         depends_on:
             - javascript-protobuf
         volumes:
-            - ./src/shared/proto/js:/proto
-            - ./src/shared/grpc-build:/js/static
+            - ./src/shared/proto/js:/go/src/grpc-client/js/proto
+            - ./src/shared/grpc-build:/go/src/grpc-client/js/static
 
     golang-protobuf:
         build: ./src/protobufs/golang-protobuf
         container_name: golang-protobuf
         volumes:
             - ./src/shared/proto:/go/src/golang-protobuf/proto
+            - ./src/shared/proto/go/proto:/go/src/golang-protobuf/go/proto
 
     javascript-protobuf:
         build: ./src/protobufs/javascript-protobuf
         container_name: javascript-protobuf
         volumes:
-            - .src/shared/proto:/home/node/proto
-            - .src/shared/proto/js:/home/node/js
+            - ./src/shared/proto:/home/node/proto
+            - ./src/shared/proto/js:/home/node/js
