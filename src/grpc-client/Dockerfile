@@ -1,5 +1,7 @@
 FROM node:9.8
-COPY . .
-WORKDIR /js
-COPY ./js/build.sh /
-#ENTRYPOINT ["/build.sh"]
+
+COPY . /src/grpc-client
+WORKDIR /src/grpc-client
+RUN ["./build.sh"]
+WORKDIR /src/grpc-client/js
+#RUN ["./build.sh"]

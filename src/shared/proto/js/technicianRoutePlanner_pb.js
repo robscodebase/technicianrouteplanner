@@ -57,7 +57,7 @@ proto.technicianRoutePlanner.RoutePlannerRequest.prototype.toObject = function(o
  */
 proto.technicianRoutePlanner.RoutePlannerRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    routename: jspb.Message.getField(msg, 1)
+    routename: msg.getRoutename()
   };
 
   if (includeInstance) {
@@ -136,8 +136,8 @@ proto.technicianRoutePlanner.RoutePlannerRequest.prototype.serializeBinary = fun
  */
 proto.technicianRoutePlanner.RoutePlannerRequest.prototype.serializeBinaryToWriter = function (writer) {
   var f = undefined;
-  f = jspb.Message.getField(this, 1);
-  if (f != null) {
+  f = this.getRoutename();
+  if (f.length > 0) {
     writer.writeString(
       1,
       f
@@ -156,31 +156,17 @@ proto.technicianRoutePlanner.RoutePlannerRequest.prototype.cloneMessage = functi
 
 
 /**
- * required string routeName = 1;
+ * optional string routeName = 1;
  * @return {string}
  */
 proto.technicianRoutePlanner.RoutePlannerRequest.prototype.getRoutename = function() {
-  return /** @type {string} */ (!this.hasRoutename() ? "" : jspb.Message.getField(this, 1));
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 1, ""));
 };
 
 
-/** @param {string|undefined} value  */
+/** @param {string} value  */
 proto.technicianRoutePlanner.RoutePlannerRequest.prototype.setRoutename = function(value) {
   jspb.Message.setField(this, 1, value);
-};
-
-
-proto.technicianRoutePlanner.RoutePlannerRequest.prototype.clearRoutename = function() {
-  jspb.Message.setField(this, 1, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return{!boolean}
- */
-proto.technicianRoutePlanner.RoutePlannerRequest.prototype.hasRoutename = function() {
-  return jspb.Message.getField(this, 1) != null;
 };
 
 
@@ -238,7 +224,7 @@ proto.technicianRoutePlanner.RoutePlannerReply.prototype.toObject = function(opt
 proto.technicianRoutePlanner.RoutePlannerReply.toObject = function(includeInstance, msg) {
   var f, obj = {
     linenumbersList: jspb.Message.getRepeatedFloatingPointField(msg, 1),
-    sizeofarray: +jspb.Message.getField(msg, 2)
+    sizeofarray: msg.getSizeofarray()
   };
 
   if (includeInstance) {
@@ -276,9 +262,8 @@ proto.technicianRoutePlanner.RoutePlannerReply.deserializeBinaryFromReader = fun
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {number} */ (reader.readDouble());
-      msg.getLinenumbersList().push(value);
-      msg.setLinenumbersList(msg.getLinenumbersList());
+      var value = /** @type {!Array.<number>} */ (reader.readPackedDouble());
+      msg.setLinenumbersList(value);
       break;
     case 2:
       var value = /** @type {number} */ (reader.readDouble());
@@ -324,13 +309,13 @@ proto.technicianRoutePlanner.RoutePlannerReply.prototype.serializeBinaryToWriter
   var f = undefined;
   f = this.getLinenumbersList();
   if (f.length > 0) {
-    writer.writeRepeatedDouble(
+    writer.writePackedDouble(
       1,
       f
     );
   }
-  f = jspb.Message.getField(this, 2);
-  if (f != null) {
+  f = this.getSizeofarray();
+  if (f !== 0.0) {
     writer.writeDouble(
       2,
       f
@@ -371,31 +356,17 @@ proto.technicianRoutePlanner.RoutePlannerReply.prototype.clearLinenumbersList = 
 
 
 /**
- * required double sizeOfArray = 2;
+ * optional double sizeOfArray = 2;
  * @return {number}
  */
 proto.technicianRoutePlanner.RoutePlannerReply.prototype.getSizeofarray = function() {
-  return /** @type {number} */ (!this.hasSizeofarray() ? 0.0 : +jspb.Message.getField(this, 2));
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 2, 0));
 };
 
 
-/** @param {number|undefined} value  */
+/** @param {number} value  */
 proto.technicianRoutePlanner.RoutePlannerReply.prototype.setSizeofarray = function(value) {
   jspb.Message.setField(this, 2, value);
-};
-
-
-proto.technicianRoutePlanner.RoutePlannerReply.prototype.clearSizeofarray = function() {
-  jspb.Message.setField(this, 2, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return{!boolean}
- */
-proto.technicianRoutePlanner.RoutePlannerReply.prototype.hasSizeofarray = function() {
-  return jspb.Message.getField(this, 2) != null;
 };
 
 

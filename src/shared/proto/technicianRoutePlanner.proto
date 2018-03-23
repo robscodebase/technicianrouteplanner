@@ -1,4 +1,4 @@
-syntax = "proto2";
+syntax = "proto3";
 
 package technicianRoutePlanner;
 
@@ -8,10 +8,10 @@ rpc RoutePlanner(RoutePlannerRequest) returns (RoutePlannerReply) {}
 }
 
 message RoutePlannerRequest {
-    required string routeName = 1;
+    string routeName = 1;
 }
 
 message RoutePlannerReply {
   repeated double lineNumbers = 1;
-  required double sizeOfArray = 2;
+  double sizeOfArray = 2;
 }

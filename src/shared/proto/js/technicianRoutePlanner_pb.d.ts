@@ -4,9 +4,7 @@
 import * as jspb from "google-protobuf";
 
 export class RoutePlannerRequest extends jspb.Message {
-  hasRoutename(): boolean;
-  clearRoutename(): void;
-  getRoutename(): string | undefined;
+  getRoutename(): string;
   setRoutename(value: string): void;
 
   serializeBinary(): Uint8Array;
@@ -21,7 +19,7 @@ export class RoutePlannerRequest extends jspb.Message {
 
 export namespace RoutePlannerRequest {
   export type AsObject = {
-    routename?: string,
+    routename: string,
   }
 }
 
@@ -31,9 +29,7 @@ export class RoutePlannerReply extends jspb.Message {
   setLinenumbersList(value: Array<number>): void;
   addLinenumbers(value: number, index?: number): number;
 
-  hasSizeofarray(): boolean;
-  clearSizeofarray(): void;
-  getSizeofarray(): number | undefined;
+  getSizeofarray(): number;
   setSizeofarray(value: number): void;
 
   serializeBinary(): Uint8Array;
@@ -49,7 +45,7 @@ export class RoutePlannerReply extends jspb.Message {
 export namespace RoutePlannerReply {
   export type AsObject = {
     linenumbersList: Array<number>,
-    sizeofarray?: number,
+    sizeofarray: number,
   }
 }
 
