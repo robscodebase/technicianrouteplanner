@@ -34,8 +34,7 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 type RoutePlannerRequest struct {
-	RouteName        *string `protobuf:"bytes,1,req,name=routeName" json:"routeName,omitempty"`
-	XXX_unrecognized []byte  `json:"-"`
+	RouteName string `protobuf:"bytes,1,opt,name=routeName" json:"routeName,omitempty"`
 }
 
 func (m *RoutePlannerRequest) Reset()                    { *m = RoutePlannerRequest{} }
@@ -44,16 +43,15 @@ func (*RoutePlannerRequest) ProtoMessage()               {}
 func (*RoutePlannerRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
 
 func (m *RoutePlannerRequest) GetRouteName() string {
-	if m != nil && m.RouteName != nil {
-		return *m.RouteName
+	if m != nil {
+		return m.RouteName
 	}
 	return ""
 }
 
 type RoutePlannerReply struct {
-	LineNumbers      []float64 `protobuf:"fixed64,1,rep,name=lineNumbers" json:"lineNumbers,omitempty"`
-	SizeOfArray      *float64  `protobuf:"fixed64,2,req,name=sizeOfArray" json:"sizeOfArray,omitempty"`
-	XXX_unrecognized []byte    `json:"-"`
+	LineNumbers []float64 `protobuf:"fixed64,1,rep,packed,name=lineNumbers" json:"lineNumbers,omitempty"`
+	SizeOfArray float64   `protobuf:"fixed64,2,opt,name=sizeOfArray" json:"sizeOfArray,omitempty"`
 }
 
 func (m *RoutePlannerReply) Reset()                    { *m = RoutePlannerReply{} }
@@ -69,8 +67,8 @@ func (m *RoutePlannerReply) GetLineNumbers() []float64 {
 }
 
 func (m *RoutePlannerReply) GetSizeOfArray() float64 {
-	if m != nil && m.SizeOfArray != nil {
-		return *m.SizeOfArray
+	if m != nil {
+		return m.SizeOfArray
 	}
 	return 0
 }
@@ -88,64 +86,64 @@ var _ grpc.ClientConn
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion4
 
-// Client API for RoutePlanner service
+// Client API for TechnicianRoutePlanner service
 
-type RoutePlannerClient interface {
+type TechnicianRoutePlannerClient interface {
 	RoutePlanner(ctx context.Context, in *RoutePlannerRequest, opts ...grpc.CallOption) (*RoutePlannerReply, error)
 }
 
-type routePlannerClient struct {
+type technicianRoutePlannerClient struct {
 	cc *grpc.ClientConn
 }
 
-func NewRoutePlannerClient(cc *grpc.ClientConn) RoutePlannerClient {
-	return &routePlannerClient{cc}
+func NewTechnicianRoutePlannerClient(cc *grpc.ClientConn) TechnicianRoutePlannerClient {
+	return &technicianRoutePlannerClient{cc}
 }
 
-func (c *routePlannerClient) RoutePlanner(ctx context.Context, in *RoutePlannerRequest, opts ...grpc.CallOption) (*RoutePlannerReply, error) {
+func (c *technicianRoutePlannerClient) RoutePlanner(ctx context.Context, in *RoutePlannerRequest, opts ...grpc.CallOption) (*RoutePlannerReply, error) {
 	out := new(RoutePlannerReply)
-	err := grpc.Invoke(ctx, "/technicianRoutePlanner.routePlanner/RoutePlanner", in, out, c.cc, opts...)
+	err := grpc.Invoke(ctx, "/technicianRoutePlanner.technicianRoutePlanner/RoutePlanner", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// Server API for RoutePlanner service
+// Server API for TechnicianRoutePlanner service
 
-type RoutePlannerServer interface {
+type TechnicianRoutePlannerServer interface {
 	RoutePlanner(context.Context, *RoutePlannerRequest) (*RoutePlannerReply, error)
 }
 
-func RegisterRoutePlannerServer(s *grpc.Server, srv RoutePlannerServer) {
-	s.RegisterService(&_RoutePlanner_serviceDesc, srv)
+func RegisterTechnicianRoutePlannerServer(s *grpc.Server, srv TechnicianRoutePlannerServer) {
+	s.RegisterService(&_TechnicianRoutePlanner_serviceDesc, srv)
 }
 
-func _RoutePlanner_RoutePlanner_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _TechnicianRoutePlanner_RoutePlanner_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RoutePlannerRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(RoutePlannerServer).RoutePlanner(ctx, in)
+		return srv.(TechnicianRoutePlannerServer).RoutePlanner(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/technicianRoutePlanner.routePlanner/RoutePlanner",
+		FullMethod: "/technicianRoutePlanner.technicianRoutePlanner/RoutePlanner",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RoutePlannerServer).RoutePlanner(ctx, req.(*RoutePlannerRequest))
+		return srv.(TechnicianRoutePlannerServer).RoutePlanner(ctx, req.(*RoutePlannerRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-var _RoutePlanner_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "technicianRoutePlanner.routePlanner",
-	HandlerType: (*RoutePlannerServer)(nil),
+var _TechnicianRoutePlanner_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "technicianRoutePlanner.technicianRoutePlanner",
+	HandlerType: (*TechnicianRoutePlannerServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "RoutePlanner",
-			Handler:    _RoutePlanner_RoutePlanner_Handler,
+			Handler:    _TechnicianRoutePlanner_RoutePlanner_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -155,17 +153,17 @@ var _RoutePlanner_serviceDesc = grpc.ServiceDesc{
 func init() { proto.RegisterFile("proto/technicianRoutePlanner.proto", fileDescriptor0) }
 
 var fileDescriptor0 = []byte{
-	// 179 bytes of a gzipped FileDescriptorProto
+	// 182 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x52, 0x2a, 0x28, 0xca, 0x2f,
 	0xc9, 0xd7, 0x2f, 0x49, 0x4d, 0xce, 0xc8, 0xcb, 0x4c, 0xce, 0x4c, 0xcc, 0x0b, 0xca, 0x2f, 0x2d,
 	0x49, 0x0d, 0xc8, 0x49, 0xcc, 0xcb, 0x4b, 0x2d, 0xd2, 0x03, 0x4b, 0x0a, 0x89, 0x61, 0x97, 0x55,
 	0x32, 0xe6, 0x12, 0x46, 0xe6, 0x07, 0xa5, 0x16, 0x96, 0xa6, 0x16, 0x97, 0x08, 0xc9, 0x70, 0x71,
-	0x16, 0x81, 0x84, 0xfd, 0x12, 0x73, 0x53, 0x25, 0x18, 0x15, 0x98, 0x34, 0x38, 0x83, 0x10, 0x02,
+	0x16, 0x81, 0x84, 0xfd, 0x12, 0x73, 0x53, 0x25, 0x18, 0x15, 0x18, 0x35, 0x38, 0x83, 0x10, 0x02,
 	0x4a, 0xe1, 0x5c, 0x82, 0xa8, 0x9a, 0x0a, 0x72, 0x2a, 0x85, 0x14, 0xb8, 0xb8, 0x73, 0x32, 0xf3,
 	0x52, 0xfd, 0x4a, 0x73, 0x93, 0x52, 0x8b, 0x8a, 0x25, 0x18, 0x15, 0x98, 0x35, 0x18, 0x83, 0x90,
 	0x85, 0x40, 0x2a, 0x8a, 0x33, 0xab, 0x52, 0xfd, 0xd3, 0x1c, 0x8b, 0x8a, 0x12, 0x2b, 0x25, 0x98,
-	0x14, 0x98, 0x40, 0x2a, 0x90, 0x84, 0x8c, 0x2a, 0xb8, 0x78, 0x8a, 0x90, 0x0c, 0x16, 0xca, 0xe0,
-	0xe2, 0x41, 0xb6, 0x48, 0x48, 0x5b, 0x0f, 0x87, 0x27, 0xb1, 0xf8, 0x41, 0x4a, 0x93, 0x38, 0xc5,
-	0x05, 0x39, 0x95, 0x4a, 0x0c, 0x80, 0x00, 0x00, 0x00, 0xff, 0xff, 0xbe, 0xaf, 0x59, 0x74, 0x44,
-	0x01, 0x00, 0x00,
+	0x14, 0x18, 0x41, 0x2a, 0x90, 0x84, 0x8c, 0x9a, 0x18, 0xb9, 0x70, 0x38, 0x54, 0x28, 0x83, 0x8b,
+	0x07, 0x85, 0xaf, 0xad, 0x87, 0xc3, 0xbf, 0x58, 0xbc, 0x23, 0xa5, 0x49, 0x9c, 0xe2, 0x82, 0x9c,
+	0x4a, 0x25, 0x86, 0x24, 0x36, 0x70, 0x88, 0x19, 0x03, 0x02, 0x00, 0x00, 0xff, 0xff, 0xad, 0xbc,
+	0x66, 0x16, 0x57, 0x01, 0x00, 0x00,
 }

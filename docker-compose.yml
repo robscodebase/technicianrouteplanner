@@ -54,4 +54,5 @@ services:
         build: ./src/protobufs/javascript-protobuf
         container_name: javascript-protobuf
         volumes:
-            - ./src/shared/proto:/go/src/protobuf/proto
+            - .src/shared/proto:/home/node/proto
+            - .src/shared/proto/js:/home/node/js
