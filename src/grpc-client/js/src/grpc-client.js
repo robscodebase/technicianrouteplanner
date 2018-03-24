@@ -18,7 +18,8 @@ grpc.unary(technicianRoutePlanner.RoutePlanner, {
       console.log("INSIDE grpc return messageVar: ", messageVar);
       console.log("INSIDE grpc return array: ", arrayOfBoundaryPoints);
     } else {
-      console.log('Failed on reply from server.');
+      console.log("status: ", status);
+      console.log("Code.OK: ", Code.OK);
     }
   }
 });
