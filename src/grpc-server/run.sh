@@ -1,8 +1,9 @@
 #!/bin/bash
-docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)
-docker rmi $(docker images -a | grep "tech") && docker rmi $(docker images -a | grep "none")
-docker build -t grpc-server-final-technician-route-planner .
-docker run  -itd --name grpc-server-final-technician-route-planner \
+docker stop grpc-server && docker rm grpc-server
+docker rmi grpc-server && docker rmi $(docker images -a | grep "none")
+docker build -t grpc-server .
+docker run  -itd --name grpc-server \
 -v /home/robert/technicianrouteplanner/src/shared/proto/go/proto:/go/src/grpc-server/proto \
-grpc-server-final-technician-route-planner
-#docker exec -ti grpc-server-final-technician-route-planner /bin/bash
+grpc-server
+#docker exec -ti grpc-server /bin/bash
+docker logs -f grpc-server

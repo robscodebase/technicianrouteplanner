@@ -1,9 +1,10 @@
 #!/bin/bash
-docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)
-docker rmi $(docker images -a | grep "tech") && docker rmi $(docker images -a | grep "none")
-docker build -t javascript-protobuf-final-technician-route-planner .
-docker run  -itd --name javascript-protobuf-final-technician-route-planner \
+docker stop javascript-protobuf && docker rm javascript-protobuf
+docker rmi javascript-protobuf && docker rmi $(docker images -a | grep "none")
+docker build -t javascript-protobuf .
+docker run  -itd --name javascript-protobuf \
   -v /home/robert/technicianrouteplanner/src/shared/proto:/home/node/proto \
   -v /home/robert/technicianrouteplanner/src/shared/proto/js:/home/node/js \
-  javascript-protobuf-final-technician-route-planner
-#docker exec -ti javascript-protobuf-final-technician-route-planner /bin/bash
+  javascript-protobuf
+#docker exec -ti javascript-protobuf /bin/bash
+docker logs -f javascript-protobuf

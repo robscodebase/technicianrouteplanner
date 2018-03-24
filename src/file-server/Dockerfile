@@ -12,6 +12,4 @@ RUN go get github.com/gorilla/mux && \
 
 COPY . /go/src/technicianrouteplanner
 WORKDIR /go/src/technicianrouteplanner
-RUN ["./build.sh"]
-COPY ./entrypoint.sh /
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/go/src/technicianrouteplanner/entrypoint.sh"]

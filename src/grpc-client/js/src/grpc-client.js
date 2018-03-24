@@ -1,5 +1,5 @@
 import {grpc, Code, Metadata} from "grpc-web-client";
-import {RoutePlanner} from "/go/src/grpc-client/js/proto/technicianRoutePlanner_pb_service";
+import {technicianRoutePlanner} from "/go/src/grpc-client/js/proto/technicianRoutePlanner_pb_service";
 import {RoutePlannerRequest, RoutePlannerReply} from "/go/src/grpc-client/js/proto/technicianRoutePlanner_pb";
 
 const host = "http://localhost:9090";

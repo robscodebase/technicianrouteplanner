@@ -1,6 +1,9 @@
 #!/bin/bash
-docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)
-docker rmi $(docker images -a | grep "technician") && docker rmi $(docker images -a | grep "none")
-docker build -t vue-technician-route-planner .
-docker run  -itd --name vue-technician-route-planner -v /home/robert/technicianrouteplanner/src/shared/vue:/vue-technician-route-planner vue-technician-route-planner
-#docker exec -ti vue-technician-route-planner /bin/bash
+docker stop client && docker rm client
+docker rmi client && docker rmi $(docker images -a | grep "none")
+docker build -t client .
+docker run  -itd --name client \
+  -v /home/robert/technicianrouteplanner/src/shared/vue:/client \
+  client
+#docker exec -ti client /bin/bash
+docker logs -f client
