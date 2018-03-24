@@ -26,7 +26,7 @@ func main() {
 	port := 9090
 
 	grpcServer := grpc.NewServer()
-	pb.RegisterRoutePlannerServer(grpcServer, &server{})
+	pb.RegisterTechnicianRoutePlannerServer(grpcServer, &server{})
 	grpclog.SetLogger(log.New(os.Stdout, "grpc-server: ", log.LstdFlags))
 
 	wrappedServer := grpcweb.WrapServer(grpcServer)
@@ -46,7 +46,7 @@ func main() {
 	}
 }
 
-func (s *server) PlanRoute(ctx context.Context, r *pb.RoutePlannerRequest) (*pb.RoutePlannerReply, error) {
+func (s *server) RoutePlanner(ctx context.Context, r *pb.RoutePlannerRequest) (*pb.RoutePlannerReply, error) {
 	grpc.SendHeader(ctx, metadata.Pairs("Pre-Response-Metadata", "Is-sent-as-headers-unary"))
 	grpc.SetTrailer(ctx, metadata.Pairs("Post-Response-Metadata", "Is-sent-as-trailers-unary"))
 	var blankFloat float64
@@ -55,5 +55,5 @@ func (s *server) PlanRoute(ctx context.Context, r *pb.RoutePlannerRequest) (*pb.
 	for i := 0; i < 6; i++ {
 		replySlice = append(replySlice, float64(i))
 	}
-	return &pb.RoutePlannerReply{replySlice, &blankFloat, []byte("")}, nil
+	return &pb.RoutePlannerReply{replySlice, blankFloat}, nil
 }

@@ -1,12 +1,12 @@
 import {grpc, Code, Metadata} from "grpc-web-client";
-import {technicianRoutePlanner} from "../proto/technicianRoutePlanner_pb_service";
-import {RoutePlannerRequest, RoutePlannerReply} from "../proto/technicianRoutePlanner_pb";
+import {RoutePlanner} from "/go/src/grpc-client/js/proto/technicianRoutePlanner_pb_service";
+import {RoutePlannerRequest, RoutePlannerReply} from "/go/src/grpc-client/js/proto/technicianRoutePlanner_pb";
 
 const host = "http://localhost:9090";
 const routeRequest = new RoutePlannerRequest();
 routeRequest.setRoutename("Demo")
 
-grpc.unary(technicianRoutePlanner.PlanRoute, {
+grpc.unary(technicianRoutePlanner.RoutePlanner, {
   request: routeRequest,
   host: host,
   onEnd: res => {

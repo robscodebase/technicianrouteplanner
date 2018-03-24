@@ -5,7 +5,9 @@ package main
 
 import (
 	"database/sql"
+	"fmt"
 	"html/template"
+	"io/ioutil"
 	"log"
 	"net/http"
 
@@ -47,20 +49,29 @@ func main() {
 func runHandlers() http.Handler {
 	sLog("main.go: runHandlers()")
 	r := mux.NewRouter()
-	r.Handle("/home", http.RedirectHandler("/home", http.StatusFound))
 
 	// Get methods.
 	r.HandleFunc("/home", home)
+	r.HandleFunc("/grpc-build", serveGRPC)
 	//r.HandleFunc("/home", technicianRoutePageHandler)
 
 	// set different server path for development testing.
-	FileServerPath := "/go/src/technicianrouteplanner/templates"
-	//FileServerPath := "/home/robert/gocode/src/robert/technicianrouteplanner/src/file-server/templates"
-	r.PathPrefix("/").Handler(http.FileServer(http.Dir(FileServerPath)))
+	fileServerPath := "/go/src/technicianrouteplanner/src/templates"
+	r.PathPrefix("/").Handler(http.FileServer(http.Dir(fileServerPath)))
 	return r
 }
 
+func serveGRPC(w http.ResponseWriter, r *http.Request) {
+	grpcFilePath := "/go/src/technicianrouteplanner/src/grpc-build/grpc-client.js"
+	grpcClient, err := ioutil.ReadFile(grpcFilePath)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Fprintf(w, "%s", string(grpcClient))
+}
+
 func home(w http.ResponseWriter, r *http.Request) {
+	sLog("main.go: home()")
 	t, err := template.New("foo").Parse(`{{define "T"}}Hello, {{.}}!{{end}}`)
 	err = t.ExecuteTemplate(w, "T", "you have been pwned")
 	if err != nil {

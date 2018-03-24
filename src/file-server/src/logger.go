@@ -10,7 +10,7 @@ import (
 
 // If the toggles are set to true logging will be displayed
 // in docker logs.
-var serverLogToggle = false
+var serverLogToggle = true
 var dbLogToggle = false
 
 // sLog() controls the logging mechanism for functions that rely on the server.

@@ -14,8 +14,8 @@ services:
             - golang-protobuf
         container_name: file-server
         volumes:
-            - ./src/shared/vue/dist:/go/src/technicianrouteplanner/templates
-            - ./src/shared/grpc-build:/go/src/technicianrouteplanner/grpc-build
+            - ./src/shared/vue/dist:/go/src/technicianrouteplanner/src/templates
+            - ./src/shared/grpc-build:/go/src/technicianrouteplanner/src/grpc-build
     db:
         image: mongo
         container_name: technician-route-planner-mongo
@@ -28,7 +28,7 @@ services:
             - golang-protobuf
         container_name: grpc-server
         volumes:
-            - ./src/shared/proto/go:/go/src/grpc-server/proto
+            - ./src/shared/proto/go/proto:/go/src/grpc-server/src/proto
 
     vue-client:
         build: ./src/client
