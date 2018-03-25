@@ -11,17 +11,20 @@ grpc.unary(technicianRoutePlanner.RoutePlanner, {
   host: host,
   onEnd: res => {
     const { status, statusMessage, headers, message, trailers } = res;
-    //console.log(" status: ", status, " statusMessage: ", statusMessage, " headers: ", headers, " message: ", message, " trailers: ", trailers)
-    //console.log(" message: ", message);
     if (status === Code.OK && message) {
       var messageVar = message.toObject();
       console.log("INSIDE grpc return messageVar: ", messageVar);
-      console.log("INSIDE grpc return array: ", arrayOfBoundaryPoints);
     } else {
-      console.log("status: ", status);
-      console.log("Code.OK: ", Code.OK);
+      console.log("problem with grpc connection: status: ", status);
     }
   }
 });
 
-alert("newest")
+  mapboxgl.accessToken = 'pk.eyJ1Ijoicm9ic2NvZGViYXNlIiwiYSI6ImNqZXdmeGVkMDBwMjQydm54YmNid3B5bTUifQ.zPGSWpLfJaqgCvIkqfbbYA';
+  var map = new mapboxgl.Map({
+    container: 'map',
+    zoom: 9,
+    center: [137.9150899566626, 36.25956997955441],
+    style: 'mapbox://styles/mapbox/satellite-v9',
+    hash: false
+  });

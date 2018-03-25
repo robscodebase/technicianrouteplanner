@@ -20,7 +20,39 @@ var (
 	enableTls       = flag.Bool("enable_tls", false, "Use TLS - required for HTTP2.")
 )
 type server struct{}
+
+type Point struct {
+	ID int			`bson:"id" json:"id"`
+	Lng float64 `bson:"lng" json:"lng"`
+	Lat float64 `bson:"lat" json:"lat"`
+}
+
+
+
+func createDemoDB(mdb *DB) error {
+	for k, v := range Lng {
+		err := mdb.insertPoint(Point{ID:k,Lng:v,Lat:Lat[k]})
+		if err != nil {
+			return err
+		}
+	}
+	return nil
+}
 func main() {
+	var mdb *DB
+	mdb = &DB{Server:"mongo",Database:"points"}
+	mdb.newMongoDB()
+	err := createDemoDB(mdb)
+	if err != nil {
+		log.Panicf("grpc-server: main.go: main(): call to createDemoDB(): err", err)
+	}
+	var points []Point
+	points, err = mdb.listPoints()
+	if err != nil {
+		log.Panicf("grpc-server: main.go: main(): call to listPoints(): err", err)
+	}
+	log.Println(points)
+
 	flag.Parse()
 
 	port := 9090

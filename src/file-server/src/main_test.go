@@ -22,7 +22,7 @@ func TestRunHandlers(t *testing.T) {
 		pageName  string
 		pageTitle string
 	}{
-		{pageName: "home", pageTitle: "<title>Technician Route Planner</title>"},
+		{pageName: "/", pageTitle: "<title>Technician Route Planner</title>"},
 	}
 	for _, v := range testHandlerTable {
 		response := testGetHTTP(server, v.pageName)
