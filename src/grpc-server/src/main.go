@@ -27,31 +27,25 @@ type Point struct {
 	Lat float64 `bson:"lat" json:"lat"`
 }
 
-
-
 func createDemoDB(mdb *DB) error {
 	for k, v := range Lng {
-		err := mdb.insertPoint(Point{ID:k,Lng:v,Lat:Lat[k]})
+		err = mdb.insertPoint(Point{ID:k,Lng:v,Lat:Lat[k]})
 		if err != nil {
 			return err
 		}
 	}
 	return nil
 }
+var mdb *DB
+var err error
 func main() {
-	var mdb *DB
 	mdb = &DB{Server:"mongo",Database:"points"}
 	mdb.newMongoDB()
-	err := createDemoDB(mdb)
+	err = createDemoDB(mdb)
 	if err != nil {
 		log.Panicf("grpc-server: main.go: main(): call to createDemoDB(): err", err)
 	}
-	var points []Point
-	points, err = mdb.listPoints()
-	if err != nil {
-		log.Panicf("grpc-server: main.go: main(): call to listPoints(): err", err)
-	}
-	log.Println(points)
+
 
 	flag.Parse()
 
@@ -73,19 +67,29 @@ func main() {
 
 	grpclog.Printf("file: main.go Starting grpc-server. http port: %d, with TLS: %v", port, *enableTls)
 
-	if err := httpServer.ListenAndServe(); err != nil {
+	if err = httpServer.ListenAndServe(); err != nil {
 		grpclog.Fatalf("file: main.go failed starting http server: %v", err)
 	}
 }
 
+func pointsToSlice(points []Point) (float64, []float64) {
+	var floatSlice []float64
+	var i int
+	for i, _ = range points {
+		floatSlice = append(floatSlice, points[i].Lng)
+		floatSlice = append(floatSlice, points[i].Lat)
+		}
+	return float64(i), floatSlice
+}
 func (s *server) RoutePlanner(ctx context.Context, r *pb.RoutePlannerRequest) (*pb.RoutePlannerReply, error) {
 	grpc.SendHeader(ctx, metadata.Pairs("Pre-Response-Metadata", "Is-sent-as-headers-unary"))
 	grpc.SetTrailer(ctx, metadata.Pairs("Post-Response-Metadata", "Is-sent-as-trailers-unary"))
-	var blankFloat float64
-	blankFloat = 6
-	var replySlice []float64
-	for i := 0; i < 6; i++ {
-		replySlice = append(replySlice, float64(i))
+	var points []Point
+	points, err = mdb.listPoints()
+	if err != nil {
+		log.Panicf("grpc-server: main.go: main(): call to listPoints(): err", err)
 	}
-	return &pb.RoutePlannerReply{replySlice, blankFloat}, nil
+
+	i, floatSlice := pointsToSlice(points)
+	return &pb.RoutePlannerReply{floatSlice, i}, nil
 }
