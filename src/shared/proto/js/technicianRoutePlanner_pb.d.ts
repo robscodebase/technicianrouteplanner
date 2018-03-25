@@ -24,10 +24,10 @@ export namespace RoutePlannerRequest {
 }
 
 export class RoutePlannerReply extends jspb.Message {
-  clearLinenumbersList(): void;
-  getLinenumbersList(): Array<number>;
-  setLinenumbersList(value: Array<number>): void;
-  addLinenumbers(value: number, index?: number): number;
+  clearCoordinatesList(): void;
+  getCoordinatesList(): Array<number>;
+  setCoordinatesList(value: Array<number>): void;
+  addCoordinates(value: number, index?: number): number;
 
   getSizeofarray(): number;
   setSizeofarray(value: number): void;
@@ -44,7 +44,7 @@ export class RoutePlannerReply extends jspb.Message {
 
 export namespace RoutePlannerReply {
   export type AsObject = {
-    linenumbersList: Array<number>,
+    coordinatesList: Array<number>,
     sizeofarray: number,
   }
 }

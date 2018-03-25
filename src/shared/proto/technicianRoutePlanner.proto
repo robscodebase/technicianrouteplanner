@@ -12,6 +12,6 @@ message RoutePlannerRequest {
 }
 
 message RoutePlannerReply {
-  repeated double lineNumbers = 1;
+  repeated double coordinates = 1;
   double sizeOfArray = 2;
 }

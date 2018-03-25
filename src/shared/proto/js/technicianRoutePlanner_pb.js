@@ -223,7 +223,7 @@ proto.technicianRoutePlanner.RoutePlannerReply.prototype.toObject = function(opt
  */
 proto.technicianRoutePlanner.RoutePlannerReply.toObject = function(includeInstance, msg) {
   var f, obj = {
-    linenumbersList: jspb.Message.getRepeatedFloatingPointField(msg, 1),
+    coordinatesList: jspb.Message.getRepeatedFloatingPointField(msg, 1),
     sizeofarray: msg.getSizeofarray()
   };
 
@@ -263,7 +263,7 @@ proto.technicianRoutePlanner.RoutePlannerReply.deserializeBinaryFromReader = fun
     switch (field) {
     case 1:
       var value = /** @type {!Array.<number>} */ (reader.readPackedDouble());
-      msg.setLinenumbersList(value);
+      msg.setCoordinatesList(value);
       break;
     case 2:
       var value = /** @type {number} */ (reader.readDouble());
@@ -307,7 +307,7 @@ proto.technicianRoutePlanner.RoutePlannerReply.prototype.serializeBinary = funct
  */
 proto.technicianRoutePlanner.RoutePlannerReply.prototype.serializeBinaryToWriter = function (writer) {
   var f = undefined;
-  f = this.getLinenumbersList();
+  f = this.getCoordinatesList();
   if (f.length > 0) {
     writer.writePackedDouble(
       1,
@@ -334,23 +334,23 @@ proto.technicianRoutePlanner.RoutePlannerReply.prototype.cloneMessage = function
 
 
 /**
- * repeated double lineNumbers = 1;
+ * repeated double coordinates = 1;
  * If you change this array by adding, removing or replacing elements, or if you
  * replace the array itself, then you must call the setter to update it.
  * @return {!Array.<number>}
  */
-proto.technicianRoutePlanner.RoutePlannerReply.prototype.getLinenumbersList = function() {
+proto.technicianRoutePlanner.RoutePlannerReply.prototype.getCoordinatesList = function() {
   return /** @type {!Array.<number>} */ (jspb.Message.getRepeatedFloatingPointField(this, 1));
 };
 
 
 /** @param {Array.<number>} value  */
-proto.technicianRoutePlanner.RoutePlannerReply.prototype.setLinenumbersList = function(value) {
+proto.technicianRoutePlanner.RoutePlannerReply.prototype.setCoordinatesList = function(value) {
   jspb.Message.setField(this, 1, value || []);
 };
 
 
-proto.technicianRoutePlanner.RoutePlannerReply.prototype.clearLinenumbersList = function() {
+proto.technicianRoutePlanner.RoutePlannerReply.prototype.clearCoordinatesList = function() {
   jspb.Message.setField(this, 1, []);
 };
 
