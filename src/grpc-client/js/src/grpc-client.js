@@ -1,3 +1,6 @@
+// Copyright (c) 2018 Robert Reyna. All rights reserved.
+// License BSD 3-Clause https://github.com/robscodebase/technicianrouteplanner/blob/master/LICENSE.md
+
 import {grpc, Code, Metadata} from "grpc-web-client";
 import {technicianRoutePlanner} from "/go/src/grpc-client/js/proto/technicianRoutePlanner_pb_service";
 import {RoutePlannerRequest, RoutePlannerReply} from "/go/src/grpc-client/js/proto/technicianRoutePlanner_pb";
