@@ -1,4 +1,4 @@
-#  Docker Golang Protobuf MongoDB NPM Vuejs
+#  Docker Golang Protobuf MongoDB NPM Vuejs CoreUI
 ## Technician Route Planner Demo App
 
 Docker Golang Protobuf MongoDB NPM Vuejs is created as a demo project for my portfolio.
@@ -35,3 +35,4 @@ You must have Docker and Docker-Compose installed on your machine.
 * Vuejs
 * Docker
 * MongoDB
+* CoreUI
