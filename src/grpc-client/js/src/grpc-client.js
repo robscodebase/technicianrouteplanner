@@ -90,6 +90,3 @@ map.on('load', function() {
     }, 500);
 
 });
-
-function animateLine() {
-}
