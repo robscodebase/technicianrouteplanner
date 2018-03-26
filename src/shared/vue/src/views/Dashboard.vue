@@ -5,7 +5,7 @@
         <b-card no-body class="bg-none">
           <b-card-body class="p-0">
           </b-card-body>
-          <card class="chart-wrapper px-0" style="height:400px;" height="400" id="map"><canvas id="canvas"></canvas></card>
+          <card class="chart-wrapper px-0" style="height:400px;" height="400" id="map"></card>
         </b-card>
       </b-col>
       <b-col sm="6" lg="3">
